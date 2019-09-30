@@ -19,24 +19,22 @@ public class search extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button searchButton =  findViewById(R.id.searchButton);
-        EditText productText =  findViewById(R.id.productText);
+        final EditText productText =  findViewById(R.id.productText);
 
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                resultActivity();
+                Intent resultsIntent = new Intent(search.this, results.class);
+                resultsIntent.putExtra("search",productText.getText().toString());
+                startActivity(resultsIntent);
             }
         });
 
-    }
-
-    private void resultActivity() {
-
-        Intent resultsIntent = new Intent(this, results.class);
-
-        startActivity(resultsIntent);
 
     }
+
+
+
 
 
 }
