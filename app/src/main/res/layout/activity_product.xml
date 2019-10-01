@@ -4,13 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".results">
-
-  <androidx.recyclerview.widget.RecyclerView
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:id="@+id/recyclerResults">
-
-  </androidx.recyclerview.widget.RecyclerView>
+    tools:context=".product">
 
 </androidx.constraintlayout.widget.ConstraintLayout>
