@@ -27,7 +27,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class results extends AppCompatActivity implements RecyclerAdapter.ItemCLick {
     private RecyclerView resultsView;
-    private List<Results> listResponse;
+   private List<Results> listResponsee;
 
 
 
@@ -43,7 +43,7 @@ public class results extends AppCompatActivity implements RecyclerAdapter.ItemCL
              value = extras.getString("search");
         }
 
-        getResults();
+         getResults(value);
 
         resultsView = findViewById(R.id.recyclerResults);
         resultsView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
@@ -51,7 +51,7 @@ public class results extends AppCompatActivity implements RecyclerAdapter.ItemCL
         LinearLayoutManager linear = new LinearLayoutManager(this);
         resultsView.setLayoutManager(linear);
 
-        RecyclerAdapter adapter = new RecyclerAdapter(listResponse, this);
+        RecyclerAdapter adapter = new RecyclerAdapter(listResponsee, this);
 
         resultsView.setAdapter(adapter);
 
@@ -61,20 +61,23 @@ public class results extends AppCompatActivity implements RecyclerAdapter.ItemCL
 
     }
 
-    private void getResults(){
+    private void getResults(String value){
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://api.mercadolibre.com/")
+                .baseUrl("https://api.mercadolibre.com")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         APIHolder holder = retrofit.create(APIHolder.class);
 
-        Call<List<Results>> call = holder.getResults();
+        Call<List<Results>> call = holder.getResults(value);
+
+
 
         call.enqueue(new Callback<List<Results>>() {
             @Override
             public void onResponse(Call<List<Results>> call, Response<List<Results>> response) {
-                listResponse = response.body();
+             List <Results> listResponse = response.body();
+
 
 
             }

@@ -7,11 +7,12 @@ import java.util.List;
 import retrofit2.Call;
 
 import retrofit2.http.GET;
+import retrofit2.http.Query;
 
 public interface APIHolder {
 
 
-    @GET("sites/MLA/search?q=Motorola%20G6")
-    Call <List<Results>> getResults();
+    @GET("/sites/MLA/search")
+    Call <List<Results>> getResults(@Query("q") String query);
 
 }

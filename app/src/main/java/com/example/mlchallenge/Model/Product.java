@@ -1,10 +1,23 @@
 package com.example.mlchallenge.Model;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class Product {
+    @SerializedName("id")
+    @Expose
     private int id;
+
+    @SerializedName("title")
+    @Expose
     private String title;
-    private  String seller;
+
+    @SerializedName("price")
+    @Expose
     private int price;
+
+    @SerializedName("condition")
+    @Expose
     private  String condition;
 
     public int getId() {
@@ -15,9 +28,7 @@ public class Product {
         return title;
     }
 
-    public String getSeller() {
-        return seller;
-    }
+
 
     public int getPrice() {
         return price;
