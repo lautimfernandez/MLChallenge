@@ -16,11 +16,11 @@ import java.util.List;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ResultsViewHolder> {
 
-    private List<Results> listItems;
+    private Results listItems;
     final private ItemCLick onClickListener;
 
 
-    public RecyclerAdapter(List<Results> items, ItemCLick listener){
+    public RecyclerAdapter(Results items, ItemCLick listener){
         listItems = items;
         onClickListener = listener;
     }

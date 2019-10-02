@@ -1,4 +1,4 @@
-package com.example.mlchallenge;
+package com.example.mlchallenge.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,7 +8,7 @@ import android.widget.EditText;
 import android.widget.Button;
 import android.content.Intent;
 
-
+import com.example.mlchallenge.R;
 
 
 public class search extends AppCompatActivity {

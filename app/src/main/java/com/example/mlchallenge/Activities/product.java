@@ -1,8 +1,10 @@
-package com.example.mlchallenge;
+package com.example.mlchallenge.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.mlchallenge.R;
 
 public class product extends AppCompatActivity {
 

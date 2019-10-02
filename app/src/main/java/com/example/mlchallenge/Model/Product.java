@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 public class Product {
     @SerializedName("id")
     @Expose
-    private int id;
+    private String id;
 
     @SerializedName("title")
     @Expose
@@ -14,13 +14,13 @@ public class Product {
 
     @SerializedName("price")
     @Expose
-    private int price;
+    private float price;
 
     @SerializedName("condition")
     @Expose
     private  String condition;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
@@ -28,9 +28,7 @@ public class Product {
         return title;
     }
 
-
-
-    public int getPrice() {
+    public float getPrice() {
         return price;
     }
 

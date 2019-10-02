@@ -12,7 +12,7 @@ import retrofit2.http.Query;
 public interface APIHolder {
 
 
-    @GET("/sites/MLA/search")
-    Call <List<Results>> getResults(@Query("q") String query);
+    @GET("sites/MLA/search")
+    Call <Results> getResults(@Query("q") String query);
 
 }
