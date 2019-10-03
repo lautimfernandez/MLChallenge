@@ -20,6 +20,10 @@ public class Product {
     @Expose
     private  String condition;
 
+    @SerializedName("thumbnail")
+    @Expose
+    private  String thumbnail;
+
     public String getId() {
         return id;
     }
@@ -36,6 +40,9 @@ public class Product {
         return condition;
     }
 
+    public String getThumbnail() {
+        return thumbnail;
+    }
 
 
 }

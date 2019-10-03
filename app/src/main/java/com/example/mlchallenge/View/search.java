@@ -1,4 +1,4 @@
-package com.example.mlchallenge.Activities;
+package com.example.mlchallenge.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 

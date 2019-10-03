@@ -1,4 +1,4 @@
-package com.example.mlchallenge.Activities;
+package com.example.mlchallenge.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.mlchallenge.APIHolder.APIHolder;
+import com.example.mlchallenge.Interface.APIHolder;
 import com.example.mlchallenge.Adapter.RecyclerAdapter;
 import com.example.mlchallenge.Model.Results;
 import com.example.mlchallenge.R;
@@ -44,7 +44,7 @@ public class results extends AppCompatActivity implements RecyclerAdapter.ItemCL
         LinearLayoutManager linear = new LinearLayoutManager(this);
         resultsView.setLayoutManager(linear);
 
-        RecyclerAdapter adapter = new RecyclerAdapter(res, this);
+        RecyclerAdapter adapter = new RecyclerAdapter(res.getResults(), this);
 
         resultsView.setAdapter(adapter);
 

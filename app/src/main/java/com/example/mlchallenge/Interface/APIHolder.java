@@ -1,8 +1,6 @@
-package com.example.mlchallenge.APIHolder;
+package com.example.mlchallenge.Interface;
 
 import com.example.mlchallenge.Model.Results;
-
-import java.util.List;
 
 import retrofit2.Call;
 

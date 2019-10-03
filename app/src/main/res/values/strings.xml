@@ -3,4 +3,6 @@
     <string name="mercado_libre_challenge">Mercado Libre Challenge</string>
     <string name="buscar_producto">Buscar producto</string>
     <string name="ingrese_producto">Ingrese producto</string>
+    <string name="comenzar">Comenzar</string>
+    <string name="errorText">Error. Por favor intente nuevamente.</string>
 </resources>

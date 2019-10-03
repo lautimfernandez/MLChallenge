@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mlchallenge.Model.Product;
 import com.example.mlchallenge.Model.Results;
 import com.example.mlchallenge.R;
 
@@ -16,11 +17,11 @@ import java.util.List;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ResultsViewHolder> {
 
-    private Results listItems;
+    private List<Product> listItems;
     final private ItemCLick onClickListener;
 
 
-    public RecyclerAdapter(Results items, ItemCLick listener){
+    public RecyclerAdapter(List<Product> items, ItemCLick listener){
         listItems = items;
         onClickListener = listener;
     }
@@ -55,7 +56,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Result
 
     @Override
     public int getItemCount() {
-        return 0;
+        return listItems.size();
     }
 
     class ResultsViewHolder extends RecyclerView.ViewHolder implements  View.OnClickListener{
