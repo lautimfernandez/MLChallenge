@@ -1,7 +1,10 @@
 package com.example.mlchallenge.View;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
@@ -15,6 +18,7 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.example.mlchallenge.Adapter.RecyclerAdapter;
 import com.example.mlchallenge.Base.BaseActivity;
 import com.example.mlchallenge.Interface.SearchView;
 import com.example.mlchallenge.Model.Product;
@@ -22,9 +26,11 @@ import com.example.mlchallenge.Model.SearchInteractor;
 import com.example.mlchallenge.Presenter.SearchPresenter;
 import com.example.mlchallenge.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class SearchActivity extends BaseActivity<SearchPresenter> implements SearchView, android.widget.SearchView.OnQueryTextListener {
@@ -33,10 +39,11 @@ public class SearchActivity extends BaseActivity<SearchPresenter> implements Sea
     ProgressBar progressBar;
     @BindView(R.id.errorText)
     TextView errorText;
-    @BindView(R.id.recyclerResults)
+    @BindView(R.id.recyclerResults) @Nullable
     RecyclerView recyclerView;
 
-
+    List<Product> products ;
+    RecyclerAdapter adapter ;
 
 
 
@@ -50,9 +57,9 @@ public class SearchActivity extends BaseActivity<SearchPresenter> implements Sea
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-
-
-        //fetchSearchList(query);
+        ButterKnife.bind(this);
+        adapter = new RecyclerAdapter(products) ;
+        recyclerView.setAdapter(adapter);
 
     }
 
@@ -62,7 +69,6 @@ public class SearchActivity extends BaseActivity<SearchPresenter> implements Sea
         MenuItem menuItem = menu.findItem(R.id.action_search);
         android.widget.SearchView searchView = (android.widget.SearchView) menuItem.getActionView();
         searchView.setOnQueryTextListener(this);
-
         return true;
     }
 
@@ -89,9 +95,13 @@ public class SearchActivity extends BaseActivity<SearchPresenter> implements Sea
 
     @Override
     public void showSearchList(List<Product> products) {
-        //LLENAR RECYCLER
+        adapter.setData(products);
+        adapter.notifyDataSetChanged();
 
-    }
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+        LinearLayoutManager linear = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(linear);
+}
 
     @Override
     public void fetchSearchList(String value) {

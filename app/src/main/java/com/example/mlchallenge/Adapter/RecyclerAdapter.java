@@ -18,15 +18,17 @@ import java.util.List;
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ResultsViewHolder> {
 
     private List<Product> listItems;
-    final private ItemCLick onClickListener;
+   // final private ItemCLick onClickListener;
 
 
-    public RecyclerAdapter(List<Product> items, ItemCLick listener){
+    public RecyclerAdapter(List<Product> items){
         listItems = items;
-        onClickListener = listener;
+        //onClickListener = listener;
     }
 
-
+    public void setData(List<Product> products) {
+        listItems = products;
+    }
 
 
     public interface ItemCLick{
@@ -59,26 +61,27 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Result
         return listItems.size();
     }
 
-    class ResultsViewHolder extends RecyclerView.ViewHolder implements  View.OnClickListener{
+    class ResultsViewHolder extends RecyclerView.ViewHolder /*implements  View.OnClickListener*/{
 
         TextView nameResult;
 
         public ResultsViewHolder(@NonNull View itemView) {
             super(itemView);
             nameResult = itemView.findViewById(R.id.nameResult);
-            itemView.setOnClickListener(this);
+            //itemView.setOnClickListener(this);
 
         }
 
         void bind(int listIndex){
-            nameResult.setText(String.valueOf(listIndex));
+            Product product = listItems.get(listIndex);
+            nameResult.setText(product.getTitle());
         }
-
+        /*
         @Override
         public void onClick(View v) {
             int clickedItem = getAdapterPosition();
             onClickListener.onItemClick(clickedItem);
-        }
+        }*/
     }
 
 }

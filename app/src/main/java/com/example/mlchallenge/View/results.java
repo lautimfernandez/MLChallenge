@@ -44,9 +44,9 @@ public class results extends AppCompatActivity implements RecyclerAdapter.ItemCL
         LinearLayoutManager linear = new LinearLayoutManager(this);
         resultsView.setLayoutManager(linear);
 
-        RecyclerAdapter adapter = new RecyclerAdapter(res.getResults(), this);
+        //RecyclerAdapter adapter = new RecyclerAdapter(res.getResults(), this);
 
-        resultsView.setAdapter(adapter);
+       // resultsView.setAdapter(adapter);
 
 
     }
