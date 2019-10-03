@@ -27,8 +27,9 @@ public class SearchPresenter extends BasePresenter implements SearchInteractor.o
     @Override
     public void onSuccess(List<Product> products){
         view.hideProgressBar();
+        view.showSearch();
         view.showSearchList(products);
-        //view.showSearch();
+
     }
 
     @Override

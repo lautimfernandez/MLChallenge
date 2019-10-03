@@ -58,8 +58,7 @@ public class SearchActivity extends BaseActivity<SearchPresenter> implements Sea
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
         ButterKnife.bind(this);
-        adapter = new RecyclerAdapter(products) ;
-        recyclerView.setAdapter(adapter);
+
 
     }
 
@@ -95,12 +94,14 @@ public class SearchActivity extends BaseActivity<SearchPresenter> implements Sea
 
     @Override
     public void showSearchList(List<Product> products) {
-        adapter.setData(products);
-        adapter.notifyDataSetChanged();
+        /*adapter.setData(products);
+        adapter.notifyDataSetChanged();*/
 
         recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         LinearLayoutManager linear = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linear);
+        adapter = new RecyclerAdapter(products) ;
+        recyclerView.setAdapter(adapter);
 }
 
     @Override
