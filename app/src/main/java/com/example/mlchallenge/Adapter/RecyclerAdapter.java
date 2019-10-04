@@ -4,11 +4,14 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.mlchallenge.Model.Product;
 import com.example.mlchallenge.Model.Results;
 import com.example.mlchallenge.R;
@@ -19,6 +22,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Result
 
     private List<Product> listItems;
    // final private ItemCLick onClickListener;
+
+    public Context mContext;
 
 
     public RecyclerAdapter(List<Product> items){
@@ -40,7 +45,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Result
     @Override
     public ResultsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        Context mContext = parent.getContext();
+        mContext = parent.getContext();
         int layoutIdItem = R.layout.product_row;
         LayoutInflater inflater = LayoutInflater.from(mContext);
         boolean attach = false;
@@ -64,10 +69,16 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Result
     class ResultsViewHolder extends RecyclerView.ViewHolder /*implements  View.OnClickListener*/{
 
         TextView nameResult;
+        TextView priceResult;
+        ImageView imageResult;
 
         public ResultsViewHolder(@NonNull View itemView) {
             super(itemView);
             nameResult = itemView.findViewById(R.id.nameResult);
+            priceResult = itemView.findViewById(R.id.priceResult);
+            imageResult = itemView.findViewById(R.id.imageProduct);
+
+
             //itemView.setOnClickListener(this);
 
         }
@@ -75,6 +86,12 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Result
         void bind(int listIndex){
             Product product = listItems.get(listIndex);
             nameResult.setText(product.getTitle());
+            priceResult.setText("$"+product.getPrice());
+            Glide.with(itemView.getContext())
+                    .load(product.getThumbnail())
+                    .into(imageResult);
+
+
         }
         /*
         @Override
