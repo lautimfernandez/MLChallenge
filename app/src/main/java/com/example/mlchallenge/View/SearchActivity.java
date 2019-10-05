@@ -33,7 +33,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class SearchActivity extends BaseActivity<SearchPresenter> implements SearchView, android.widget.SearchView.OnQueryTextListener {
+public class SearchActivity extends BaseActivity<SearchPresenter> implements SearchView, android.widget.SearchView.OnQueryTextListener, RecyclerAdapter.ItemCLick {
 
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
@@ -42,7 +42,6 @@ public class SearchActivity extends BaseActivity<SearchPresenter> implements Sea
     @BindView(R.id.recyclerResults) @Nullable
     RecyclerView recyclerView;
 
-    List<Product> products ;
     RecyclerAdapter adapter ;
 
 
@@ -94,13 +93,11 @@ public class SearchActivity extends BaseActivity<SearchPresenter> implements Sea
 
     @Override
     public void showSearchList(List<Product> products) {
-        /*adapter.setData(products);
-        adapter.notifyDataSetChanged();*/
 
         recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         LinearLayoutManager linear = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linear);
-        adapter = new RecyclerAdapter(products) ;
+        adapter = new RecyclerAdapter(products, this) ;
         recyclerView.setAdapter(adapter);
 }
 
@@ -123,5 +120,11 @@ public class SearchActivity extends BaseActivity<SearchPresenter> implements Sea
     @Override
     public boolean onQueryTextChange(String newText) {
         return false;
+    }
+
+    @Override
+    public void onItemClick(int clickerItem) {
+
+
     }
 }

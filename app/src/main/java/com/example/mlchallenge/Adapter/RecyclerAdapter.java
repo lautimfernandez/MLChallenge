@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.example.mlchallenge.Model.Product;
 import com.example.mlchallenge.Model.Results;
 import com.example.mlchallenge.R;
@@ -21,14 +20,14 @@ import java.util.List;
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ResultsViewHolder> {
 
     private List<Product> listItems;
-   // final private ItemCLick onClickListener;
+   final private ItemCLick onClickListener;
 
     public Context mContext;
 
 
-    public RecyclerAdapter(List<Product> items){
+    public RecyclerAdapter(List<Product> items, ItemCLick listener){
         listItems = items;
-        //onClickListener = listener;
+        onClickListener = listener;
     }
 
     public void setData(List<Product> products) {
@@ -66,7 +65,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Result
         return listItems.size();
     }
 
-    class ResultsViewHolder extends RecyclerView.ViewHolder /*implements  View.OnClickListener*/{
+    class ResultsViewHolder extends RecyclerView.ViewHolder implements  View.OnClickListener{
 
         TextView nameResult;
         TextView priceResult;
@@ -79,7 +78,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Result
             imageResult = itemView.findViewById(R.id.imageProduct);
 
 
-            //itemView.setOnClickListener(this);
+            itemView.setOnClickListener(this);
 
         }
 
@@ -93,12 +92,12 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Result
 
 
         }
-        /*
+
         @Override
         public void onClick(View v) {
             int clickedItem = getAdapterPosition();
             onClickListener.onItemClick(clickedItem);
-        }*/
+        }
     }
 
 }

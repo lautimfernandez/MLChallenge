@@ -24,6 +24,27 @@ public class Product {
     @Expose
     private  String thumbnail;
 
+    @SerializedName("sold_quantity")
+    @Expose
+    private  int soldQuantity;
+
+    @SerializedName("available_quantity")
+    @Expose
+    private  int avaliableQuantity;
+
+    @SerializedName("accepts_mercadopago")
+    @Expose
+    private boolean acceptsMercadoPago;
+
+    @SerializedName("address")
+    @Expose
+    private Address address;
+
+    @SerializedName("shipping")
+    @Expose
+    private Shipping shipping;
+
+
     public String getId() {
         return id;
     }
@@ -44,5 +65,23 @@ public class Product {
         return thumbnail;
     }
 
+    public int getSoldQuantity() {
+        return soldQuantity;
+    }
 
+    public int getAvaliableQuantity() {
+        return avaliableQuantity;
+    }
+
+    public boolean getAcceptsMercadoPago() {
+        return acceptsMercadoPago;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public Shipping getShipping() {
+        return shipping;
+    }
 }
