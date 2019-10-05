@@ -3,7 +3,9 @@ package com.example.mlchallenge.Model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Shipping {
+import java.io.Serializable;
+
+public class Shipping implements Serializable {
 
     @SerializedName("free_shipping")
     @Expose

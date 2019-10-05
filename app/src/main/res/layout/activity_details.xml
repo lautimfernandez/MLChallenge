@@ -20,7 +20,7 @@
             android:layout_height="match_parent">
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/cart"
                 android:layout_width="279dp"
                 android:layout_height="53dp"
                 android:background="@android:color/white"
@@ -30,7 +30,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.462"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button"
+                app:layout_constraintTop_toBottomOf="@+id/buy"
                 app:layout_constraintVertical_bias="0.0" />
 
             <ImageView
@@ -89,9 +89,10 @@
                 app:layout_constraintVertical_bias="0.081" />
 
             <ImageView
-                android:id="@+id/imageView4"
+                android:id="@+id/shipping"
                 android:layout_width="40dp"
                 android:layout_height="43dp"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.888"
@@ -101,11 +102,12 @@
                 app:srcCompat="@drawable/freeship" />
 
             <ImageView
-                android:id="@+id/imageView8"
+                android:id="@+id/mercadoPago"
                 android:layout_width="59dp"
                 android:layout_height="75dp"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/imageView4"
+                app:layout_constraintEnd_toStartOf="@+id/shipping"
                 app:layout_constraintHorizontal_bias="0.871"
                 app:layout_constraintStart_toEndOf="@+id/priceDetails"
                 app:layout_constraintTop_toBottomOf="@+id/titleDetails"
@@ -146,10 +148,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/titleDetails"
-                app:layout_constraintVertical_bias="0.717" />
+                app:layout_constraintVertical_bias="0.899" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/buy"
                 android:layout_width="279dp"
                 android:layout_height="53dp"
                 android:background="@color/design_default_color_primary"

@@ -37,6 +37,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Result
 
     public interface ItemCLick{
         void onItemClick(int clickerItem);
+
+        void onItemClick(Product product);
     }
 
 
@@ -96,7 +98,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Result
         @Override
         public void onClick(View v) {
             int clickedItem = getAdapterPosition();
-            onClickListener.onItemClick(clickedItem);
+            onClickListener.onItemClick(listItems.get(clickedItem));
         }
     }
 

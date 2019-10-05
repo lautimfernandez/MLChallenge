@@ -12,6 +12,7 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,6 +27,7 @@ import com.example.mlchallenge.Model.SearchInteractor;
 import com.example.mlchallenge.Presenter.SearchPresenter;
 import com.example.mlchallenge.R;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -125,6 +127,12 @@ public class SearchActivity extends BaseActivity<SearchPresenter> implements Sea
     @Override
     public void onItemClick(int clickerItem) {
 
+    }
 
+    @Override
+    public void onItemClick(Product product){
+        Intent resultsIntent = new Intent(SearchActivity.this, DetailsActivity.class);
+        resultsIntent.putExtra("product", product);
+        startActivity(resultsIntent);
     }
 }

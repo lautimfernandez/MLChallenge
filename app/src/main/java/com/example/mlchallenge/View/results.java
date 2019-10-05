@@ -10,6 +10,7 @@ import android.os.Bundle;
 
 import com.example.mlchallenge.Interface.APIHolder;
 import com.example.mlchallenge.Adapter.RecyclerAdapter;
+import com.example.mlchallenge.Model.Product;
 import com.example.mlchallenge.Model.Results;
 import com.example.mlchallenge.R;
 
@@ -81,6 +82,11 @@ public class results extends AppCompatActivity implements RecyclerAdapter.ItemCL
         Intent productIntent = new Intent(results.this, product.class);
         productIntent.putExtra("item_id", clickedItem);
         startActivity(productIntent);
+
+    }
+
+    @Override
+    public void onItemClick(Product product) {
 
     }
 }

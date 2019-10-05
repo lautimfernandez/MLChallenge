@@ -5,10 +5,11 @@ package com.example.mlchallenge.Model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
 
-public class Results {
+public class Results implements Serializable {
     @SerializedName("query")
     @Expose
     private String query;
