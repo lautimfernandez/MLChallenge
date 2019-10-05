@@ -5,14 +5,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.mlchallenge.Model.Product;
 import com.example.mlchallenge.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -36,20 +41,35 @@ public class DetailsActivity extends AppCompatActivity {
     @BindView(R.id.spinner)
     Spinner avaliableQuantity;
     @BindView(R.id.buy)
-    Button comprar;
+    Button buy;
     @BindView(R.id.cart)
     Button cart;
 
+    private Toast mToast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
 
+        List<Integer> spinnerArray = new ArrayList<>();
+
+
+
         Bundle extras = getIntent().getExtras();
         Product product = (Product) extras.getSerializable("product");
         ButterKnife.bind(this);
 
+        for (int i=1;i<product.getAvaliableQuantity();i++){
+            spinnerArray.add(i);
+        }
+
+        ArrayAdapter<Integer> adapter = new ArrayAdapter<Integer>(
+                this,
+                android.R.layout.simple_spinner_item,
+                spinnerArray
+        );
+        avaliableQuantity.setAdapter(adapter);
         soldQuantity.setText(product.getSoldQuantity() + "");
         titleDetails.setText(product.getTitle());
         priceDetails.setText("$"+product.getPrice());
@@ -60,6 +80,28 @@ public class DetailsActivity extends AppCompatActivity {
         if(product.getAcceptsMercadoPago()){
             mercadoPago.setVisibility(View.VISIBLE);
         }
+        buy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(mToast!=null){
+                    mToast.cancel();
+                }
+                mToast = Toast.makeText(DetailsActivity.this, "Comprar", Toast.LENGTH_SHORT);
+                mToast.show();
+            }
+        });
+
+        cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(mToast!=null){
+                    mToast.cancel();
+                }
+               mToast = Toast.makeText(DetailsActivity.this, "Agregar al carrito", Toast.LENGTH_SHORT);
+               mToast.show();
+            }
+        });
 
         Glide.with(this)
                 .load(product.getThumbnail())
