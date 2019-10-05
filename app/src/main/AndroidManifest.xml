@@ -12,10 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".View.DetailsActivity">
-
-        </activity>
-        <activity android:name=".View.SearchActivity"></activity>
+        <activity android:name=".View.DetailsActivity" android:configChanges="orientation|screenSize"/>
+        <activity android:name=".View.SearchActivity" android:configChanges="orientation|screenSize"/>
         <activity android:name=".StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,9 +22,9 @@
             </intent-filter>
 
         </activity>
-        <activity android:name=".View.product" />
-        <activity android:name=".View.results" />
-        <activity android:name=".View.search"></activity>
+        <activity android:name=".View.product" android:configChanges="orientation|screenSize"/>
+        <activity android:name=".View.results" android:configChanges="orientation|screenSize"/>
+        <activity android:name=".View.search" android:configChanges="orientation|screenSize"/>
     </application>
 
 </manifest>

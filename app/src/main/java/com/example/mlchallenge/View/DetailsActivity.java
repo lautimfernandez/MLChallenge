@@ -60,7 +60,7 @@ public class DetailsActivity extends AppCompatActivity {
         Product product = (Product) extras.getSerializable("product");
         ButterKnife.bind(this);
 
-        for (int i=1;i<product.getAvaliableQuantity();i++){
+        for (int i=1;i<=product.getAvaliableQuantity();i++){
             spinnerArray.add(i);
         }
 
@@ -80,27 +80,21 @@ public class DetailsActivity extends AppCompatActivity {
         if(product.getAcceptsMercadoPago()){
             mercadoPago.setVisibility(View.VISIBLE);
         }
-        buy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        buy.setOnClickListener(v -> {
 
-                if(mToast!=null){
-                    mToast.cancel();
-                }
-                mToast = Toast.makeText(DetailsActivity.this, "Comprar", Toast.LENGTH_SHORT);
-                mToast.show();
+            if(mToast!=null){
+                mToast.cancel();
             }
+            mToast = Toast.makeText(DetailsActivity.this, "Comprar", Toast.LENGTH_SHORT);
+            mToast.show();
         });
 
-        cart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(mToast!=null){
-                    mToast.cancel();
-                }
-               mToast = Toast.makeText(DetailsActivity.this, "Agregar al carrito", Toast.LENGTH_SHORT);
-               mToast.show();
+        cart.setOnClickListener(v -> {
+            if(mToast!=null){
+                mToast.cancel();
             }
+           mToast = Toast.makeText(DetailsActivity.this, "Agregar al carrito", Toast.LENGTH_SHORT);
+           mToast.show();
         });
 
         Glide.with(this)

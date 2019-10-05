@@ -34,8 +34,9 @@ public class SearchPresenter extends BasePresenter implements SearchInteractor.o
 
     @Override
     public void onFailure(){
-        view.showDataFetchErrors();
         view.hideProgressBar();
+        view.showDataFetchErrors();
+
     }
 
 }
