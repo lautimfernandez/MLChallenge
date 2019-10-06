@@ -29,7 +29,7 @@ public class SearchPresenter extends BasePresenter implements SearchInteractor.o
     @Override
     public void onSuccess(List<Product> products) {
         view.hideProgressBar();
-        if (products.size() < 0){
+        if (products.size() > 0){
             view.showSearch();
             view.showSearchList(products);
         }
