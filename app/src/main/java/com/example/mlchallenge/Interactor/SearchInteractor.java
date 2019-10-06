@@ -1,8 +1,10 @@
-package com.example.mlchallenge.Model;
+package com.example.mlchallenge.Interactor;
 
 import android.util.Log;
 
 import com.example.mlchallenge.Interface.APIHolder;
+import com.example.mlchallenge.Model.Product;
+import com.example.mlchallenge.Model.Results;
 
 import java.util.List;
 

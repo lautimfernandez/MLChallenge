@@ -5,7 +5,7 @@ import androidx.annotation.NonNull;
 import com.example.mlchallenge.Base.BasePresenter;
 import com.example.mlchallenge.Interface.SearchView;
 import com.example.mlchallenge.Model.Product;
-import com.example.mlchallenge.Model.SearchInteractor;
+import com.example.mlchallenge.Interactor.SearchInteractor;
 
 import java.util.List;
 
@@ -13,6 +13,7 @@ public class SearchPresenter extends BasePresenter implements SearchInteractor.o
 
     private SearchView view;
     private SearchInteractor searchInteractor;
+
 
     public SearchPresenter(@NonNull SearchView view, @NonNull SearchInteractor searchInteractor){
         this.view = view;

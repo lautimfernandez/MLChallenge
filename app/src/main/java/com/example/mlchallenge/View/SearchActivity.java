@@ -2,17 +2,16 @@ package com.example.mlchallenge.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,17 +22,15 @@ import com.example.mlchallenge.Adapter.RecyclerAdapter;
 import com.example.mlchallenge.Base.BaseActivity;
 import com.example.mlchallenge.Interface.SearchView;
 import com.example.mlchallenge.Model.Product;
-import com.example.mlchallenge.Model.SearchInteractor;
+import com.example.mlchallenge.Interactor.SearchInteractor;
 import com.example.mlchallenge.Presenter.SearchPresenter;
 import com.example.mlchallenge.R;
+import com.google.android.material.snackbar.Snackbar;
 
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class SearchActivity extends BaseActivity<SearchPresenter> implements SearchView, android.widget.SearchView.OnQueryTextListener, RecyclerAdapter.ItemCLick {
 
@@ -50,6 +47,11 @@ public class SearchActivity extends BaseActivity<SearchPresenter> implements Sea
     RecyclerAdapter adapter ;
 
 
+    private boolean isNetworkConnected() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnectedOrConnecting();
+    }
 
     @NonNull
     @Override
@@ -128,7 +130,13 @@ public class SearchActivity extends BaseActivity<SearchPresenter> implements Sea
 
     @Override
     public boolean onQueryTextSubmit(String query) {
-        fetchSearchList(query);
+        if(this.isNetworkConnected()) {
+            fetchSearchList(query);
+        }
+        else{
+
+            Snackbar.make(findViewById(android.R.id.content), "Sin conexion. Revise sus ajustes.", Snackbar.LENGTH_LONG).setAction("conect", null).show();
+        }
         return false;
     }
 
