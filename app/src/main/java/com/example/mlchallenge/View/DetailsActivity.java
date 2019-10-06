@@ -44,6 +44,8 @@ public class DetailsActivity extends AppCompatActivity {
     Button buy;
     @BindView(R.id.cart)
     Button cart;
+    @BindView(R.id.condition)
+    TextView condition;
 
     private Toast mToast;
 
@@ -71,7 +73,8 @@ public class DetailsActivity extends AppCompatActivity {
         );
         avaliableQuantity.setAdapter(adapter);
 
-        soldQuantity.setText(product.getSoldQuantity() + "");
+        condition.setText(product.getCondition());
+        soldQuantity.setText(product.getSoldQuantity() + " vendidos");
         titleDetails.setText(product.getTitle());
         priceDetails.setText("$"+product.getPrice());
         address.setText(product.getAddress().getStateName()+ ", "  +product.getAddress().getCityName());

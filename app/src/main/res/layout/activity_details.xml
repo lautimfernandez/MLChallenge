@@ -53,10 +53,10 @@
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.044"
+                app:layout_constraintHorizontal_bias="0.036"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/imageDetails"
-                app:layout_constraintVertical_bias="0.486" />
+                app:layout_constraintVertical_bias="0.633" />
 
             <TextView
                 android:id="@+id/titleDetails"
@@ -68,10 +68,9 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.437"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageDetails"
-                app:layout_constraintVertical_bias="0.052" />
+                app:layout_constraintVertical_bias="0.129" />
 
             <TextView
                 android:id="@+id/priceDetails"
@@ -83,10 +82,10 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.078"
+                app:layout_constraintHorizontal_bias="0.037"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/titleDetails"
-                app:layout_constraintVertical_bias="0.081" />
+                app:layout_constraintVertical_bias="0.087" />
 
             <ImageView
                 android:id="@+id/shipping"
@@ -114,19 +113,6 @@
                 app:layout_constraintVertical_bias="0.046"
                 app:srcCompat="@drawable/mercadopago" />
 
-            <TextView
-                android:id="@+id/address"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ubicacion"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.077"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/priceDetails"
-                app:layout_constraintVertical_bias="0.065" />
-
             <Spinner
                 android:id="@+id/spinner"
                 android:layout_width="280dp"
@@ -134,10 +120,10 @@
                 android:layout_marginTop="136dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintHorizontal_bias="0.458"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/titleDetails"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintVertical_bias="0.256" />
 
             <TextView
                 android:id="@+id/cantidad"
@@ -148,7 +134,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/titleDetails"
-                app:layout_constraintVertical_bias="0.789" />
+                app:layout_constraintVertical_bias="0.898" />
 
             <Button
                 android:id="@+id/buy"
@@ -163,6 +149,32 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/spinner"
                 app:layout_constraintVertical_bias="0.441" />
+
+            <TextView
+                android:id="@+id/condition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="condition"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/spinner"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.037"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageDetails"
+                app:layout_constraintVertical_bias="0.079" />
+
+            <TextView
+                android:id="@+id/address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ubicacion"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.038"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/titleDetails"
+                app:layout_constraintVertical_bias="0.324" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
