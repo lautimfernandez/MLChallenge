@@ -71,7 +71,7 @@ public class DetailsActivity extends AppCompatActivity {
         String condition = product.getCondition().equals("new") ? "Nuevo" : "Usado";
         conditionQuantity.setText(condition + " - " + product.getSoldQuantity() + " vendidos");
         titleDetails.setText(product.getTitle());
-        priceDetails.setText("$" + product.getPrice());
+        priceDetails.setText("$" + product.getPriceFormated());
         address.setText(product.getAddress().getStateName() + ", " + product.getAddress().getCityName());
 
         if (product.getShipping().isFreeShipping()) {

@@ -81,7 +81,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Result
         void bind(int listIndex) {
             Product product = listItems.get(listIndex);
             nameResult.setText(product.getTitle());
-            priceResult.setText("$" + product.getPrice());
+            priceResult.setText("$" + product.getPriceFormated());
             Glide.with(itemView.getContext())
                     .load(product.getThumbnail())
                     .into(imageResult);

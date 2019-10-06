@@ -88,7 +88,7 @@
                         android:layout_marginRight="8dp"
                         android:layout_toLeftOf="@+id/mercadoPago"
                         android:scaleType="centerCrop"
-                        android:visibility="visible"
+                        android:visibility="gone"
                         app:srcCompat="@drawable/freeship" />
 
                     <ImageView
@@ -97,7 +97,7 @@
                         android:layout_height="48dp"
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentRight="true"
-                        android:visibility="visible"
+                        android:visibility="gone"
                         app:srcCompat="@drawable/mercadopago" />
                 </RelativeLayout>
 

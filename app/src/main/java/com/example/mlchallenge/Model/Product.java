@@ -4,6 +4,10 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 public class Product implements Serializable {
     @SerializedName("id")
@@ -84,5 +88,12 @@ public class Product implements Serializable {
 
     public Shipping getShipping() {
         return shipping;
+    }
+
+    public String getPriceFormated() {
+        final NumberFormat decimalFormat = new DecimalFormat().getNumberInstance(Locale.GERMAN);
+        decimalFormat.setRoundingMode(RoundingMode.CEILING);
+        decimalFormat.setMaximumFractionDigits(2);
+        return decimalFormat.format(price);
     }
 }
