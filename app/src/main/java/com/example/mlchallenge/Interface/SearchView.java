@@ -4,7 +4,7 @@ import com.example.mlchallenge.Model.Product;
 
 import java.util.List;
 
-public interface SearchView  {
+public interface SearchView {
     void showProgressBar();
 
     void hideProgressBar();
@@ -19,8 +19,10 @@ public interface SearchView  {
 
     void showDataFetchErrors();
 
-    void hideDataFetchErrors();
+    void hideHintText();
 
-    void hideFindText();
+    void showHintText();
+
+    void showNoResultItems();
 
 }

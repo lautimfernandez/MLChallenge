@@ -26,8 +26,6 @@ public class DetailsActivity extends AppCompatActivity {
 
     @BindView(R.id.imageDetails)
     ImageView imageDetails;
-    @BindView(R.id.soldQuantity)
-    TextView soldQuantity;
     @BindView(R.id.titleDetails)
     TextView titleDetails;
     @BindView(R.id.priceDetails)
@@ -44,8 +42,8 @@ public class DetailsActivity extends AppCompatActivity {
     Button buy;
     @BindView(R.id.cart)
     Button cart;
-    @BindView(R.id.condition)
-    TextView condition;
+    @BindView(R.id.conditionQuantity)
+    TextView conditionQuantity;
 
     private Toast mToast;
 
@@ -56,58 +54,54 @@ public class DetailsActivity extends AppCompatActivity {
 
         List<Integer> spinnerArray = new ArrayList<>();
 
-
-
         Bundle extras = getIntent().getExtras();
         Product product = (Product) extras.getSerializable("product");
         ButterKnife.bind(this);
 
-        for (int i=1;i<=product.getAvaliableQuantity();i++){
+        for (int i = 1; i <= product.getAvaliableQuantity(); i++) {
             spinnerArray.add(i);
         }
 
-        ArrayAdapter<Integer> adapter = new ArrayAdapter<Integer>(
+        ArrayAdapter<Integer> adapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_spinner_item,
                 spinnerArray
         );
         avaliableQuantity.setAdapter(adapter);
-
-        condition.setText(product.getCondition());
-        soldQuantity.setText(product.getSoldQuantity() + " vendidos");
+        String condition = product.getCondition().equals("new") ? "Nuevo" : "Usado";
+        conditionQuantity.setText(condition + " - " + product.getSoldQuantity() + " vendidos");
         titleDetails.setText(product.getTitle());
-        priceDetails.setText("$"+product.getPrice());
-        address.setText(product.getAddress().getStateName()+ ", "  +product.getAddress().getCityName());
+        priceDetails.setText("$" + product.getPrice());
+        address.setText(product.getAddress().getStateName() + ", " + product.getAddress().getCityName());
 
-        if(product.getShipping().isFreeShipping()){
+        if (product.getShipping().isFreeShipping()) {
             shipping.setVisibility(View.VISIBLE);
         }
 
-        if(product.getAcceptsMercadoPago()){
+        if (product.getAcceptsMercadoPago()) {
             mercadoPago.setVisibility(View.VISIBLE);
         }
 
         buy.setOnClickListener(v -> {
-
-            if(mToast!=null){
+            if (mToast != null) {
                 mToast.cancel();
             }
+
             mToast = Toast.makeText(DetailsActivity.this, "Comprar", Toast.LENGTH_SHORT);
             mToast.show();
         });
 
         cart.setOnClickListener(v -> {
-            if(mToast!=null){
+            if (mToast != null) {
                 mToast.cancel();
             }
-           mToast = Toast.makeText(DetailsActivity.this, "Agregar al carrito", Toast.LENGTH_SHORT);
-           mToast.show();
+            mToast = Toast.makeText(DetailsActivity.this, "Agregar al carrito", Toast.LENGTH_SHORT);
+            mToast.show();
         });
 
         Glide.with(this)
                 .load(product.getThumbnail())
                 .into(imageDetails);
-
 
 
     }

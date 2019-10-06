@@ -15,7 +15,6 @@ public class Address implements Serializable {
     @Expose
     private String cityName;
 
-
     public String getStateName() {
         return stateName;
     }

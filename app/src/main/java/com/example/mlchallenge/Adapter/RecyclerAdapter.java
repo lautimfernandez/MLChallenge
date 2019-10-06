@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.mlchallenge.Model.Product;
-import com.example.mlchallenge.Model.Results;
 import com.example.mlchallenge.R;
 
 import java.util.List;
@@ -20,12 +19,10 @@ import java.util.List;
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ResultsViewHolder> {
 
     private List<Product> listItems;
-   final private ItemCLick onClickListener;
-
-    public Context mContext;
+    final private ItemCLick onClickListener;
 
 
-    public RecyclerAdapter(List<Product> items, ItemCLick listener){
+    public RecyclerAdapter(List<Product> items, ItemCLick listener) {
         listItems = items;
         onClickListener = listener;
     }
@@ -35,9 +32,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Result
     }
 
 
-    public interface ItemCLick{
-        void onItemClick(int clickerItem);
-
+    public interface ItemCLick {
         void onItemClick(Product product);
     }
 
@@ -45,15 +40,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Result
     @NonNull
     @Override
     public ResultsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
-        mContext = parent.getContext();
+        final Context mContext = parent.getContext();
         int layoutIdItem = R.layout.product_row;
         LayoutInflater inflater = LayoutInflater.from(mContext);
         boolean attach = false;
         View view = inflater.inflate(layoutIdItem, parent, attach);
         ResultsViewHolder viewHolder = new ResultsViewHolder(view);
 
-        return  viewHolder;
+        return viewHolder;
 
     }
 
@@ -67,7 +61,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Result
         return listItems.size();
     }
 
-    class ResultsViewHolder extends RecyclerView.ViewHolder implements  View.OnClickListener{
+    class ResultsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView nameResult;
         TextView priceResult;
@@ -84,10 +78,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Result
 
         }
 
-        void bind(int listIndex){
+        void bind(int listIndex) {
             Product product = listItems.get(listIndex);
             nameResult.setText(product.getTitle());
-            priceResult.setText("$"+product.getPrice());
+            priceResult.setText("$" + product.getPrice());
             Glide.with(itemView.getContext())
                     .load(product.getThumbnail())
                     .into(imageResult);

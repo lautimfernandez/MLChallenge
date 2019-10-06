@@ -8,38 +8,38 @@ import androidx.annotation.CallSuper;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-public abstract class BasePresenter{
-    
-    protected BasePresenter(){
+public abstract class BasePresenter {
+
+    protected BasePresenter() {
 
     }
 
     @CallSuper
-    void onCreate(@Nullable final Bundle savedInstanceState){
+    void onCreate(@Nullable final Bundle savedInstanceState) {
     }
 
     @CallSuper
-    void onResume(){
+    void onResume() {
     }
 
     @CallSuper
-    void onPause(){
+    void onPause() {
     }
 
     @CallSuper
-    void onSaveInstanceState(@Nullable final Bundle outState){
+    void onSaveInstanceState(@Nullable final Bundle outState) {
     }
 
     @CallSuper
-    void onDestroy(){
+    void onDestroy() {
     }
 
     @CallSuper
-    void onActivityResult(final int requestCode, final int resultCode, @Nullable final Intent data){
+    void onActivityResult(final int requestCode, final int resultCode, @Nullable final Intent data) {
     }
 
     @CallSuper
-    void onRequestPermissionsResult(final int requestCode, @NonNull final String[] permisssions,@NonNull final int[] grantResults){
+    void onRequestPermissionsResult(final int requestCode, @NonNull final String[] permisssions, @NonNull final int[] grantResults) {
     }
 
 

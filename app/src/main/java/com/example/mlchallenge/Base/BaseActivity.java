@@ -9,54 +9,52 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public abstract class  BaseActivity <Presenter extends BasePresenter> extends AppCompatActivity {
-   protected Presenter mPresenter;
+public abstract class BaseActivity<Presenter extends BasePresenter> extends AppCompatActivity {
+    protected Presenter mPresenter;
 
     @NonNull
     protected abstract Presenter createPresenter(@NonNull final Context context);
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState){
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mPresenter= createPresenter(this);
+        mPresenter = createPresenter(this);
         mPresenter.onCreate(savedInstanceState);
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState){
-        super.onSaveInstanceState(outState,outPersistentState);
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
         mPresenter.onSaveInstanceState(outState);
     }
 
     @Override
-    public void onPause(){
+    public void onPause() {
         super.onPause();
         mPresenter.onPause();
     }
 
     @Override
-    public void onResume(){
+    public void onResume() {
         super.onResume();
         mPresenter.onResume();
     }
 
     @Override
-    public void onDestroy(){
+    public void onDestroy() {
         super.onDestroy();
         mPresenter.onDestroy();
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data){
-        super.onActivityResult(requestCode,resultCode,data);
-        mPresenter.onActivityResult(requestCode,resultCode,data);
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        mPresenter.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults){
-        super.onRequestPermissionsResult(requestCode,permissions,grantResults);
-        mPresenter.onRequestPermissionsResult(requestCode,permissions,grantResults);
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        mPresenter.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
-
-
 }

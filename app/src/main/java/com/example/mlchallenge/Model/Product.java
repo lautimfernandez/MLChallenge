@@ -20,19 +20,19 @@ public class Product implements Serializable {
 
     @SerializedName("condition")
     @Expose
-    private  String condition;
+    private String condition;
 
     @SerializedName("thumbnail")
     @Expose
-    private  String thumbnail;
+    private String thumbnail;
 
     @SerializedName("sold_quantity")
     @Expose
-    private  int soldQuantity;
+    private int soldQuantity;
 
     @SerializedName("available_quantity")
     @Expose
-    private  int avaliableQuantity;
+    private int avaliableQuantity;
 
     @SerializedName("accepts_mercadopago")
     @Expose
@@ -45,7 +45,6 @@ public class Product implements Serializable {
     @SerializedName("shipping")
     @Expose
     private Shipping shipping;
-
 
     public String getId() {
         return id;

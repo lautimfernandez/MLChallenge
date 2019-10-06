@@ -15,30 +15,33 @@ public class SearchPresenter extends BasePresenter implements SearchInteractor.o
     private SearchInteractor searchInteractor;
 
 
-    public SearchPresenter(@NonNull SearchView view, @NonNull SearchInteractor searchInteractor){
+    public SearchPresenter(@NonNull SearchView view, @NonNull SearchInteractor searchInteractor) {
         this.view = view;
         this.searchInteractor = searchInteractor;
     }
 
-    public void fetchData(String query){
-        view.hideFindText();
+    public void fetchData(String query) {
+        view.hideHintText();
         view.showProgressBar();
         searchInteractor.remoteFetch(this, query);
     }
 
     @Override
-    public void onSuccess(List<Product> products){
-        view.hideFindText();
+    public void onSuccess(List<Product> products) {
         view.hideProgressBar();
-        view.hideDataFetchErrors();
-        view.showSearch();
-        view.showSearchList(products);
+        if (products.size() < 0){
+            view.showSearch();
+            view.showSearchList(products);
+        }
+        else{
+            view.showNoResultItems();
+        }
 
     }
 
     @Override
-    public void onFailure(){
-        view.hideFindText();
+    public void onFailure() {
+        view.showHintText();
         view.showDataFetchErrors();
         view.hideProgressBar();
         view.hideSearch();

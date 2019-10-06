@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -36,16 +35,13 @@ public class SearchActivity extends BaseActivity<SearchPresenter> implements Sea
 
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
-    @BindView(R.id.errorText)
-    TextView errorText;
-    @BindView(R.id.recyclerResults) @Nullable
+    @BindView(R.id.recyclerResults)
+    @Nullable
     RecyclerView recyclerView;
     @BindView(R.id.findText)
     TextView findText;
 
-
-    RecyclerAdapter adapter ;
-
+    RecyclerAdapter adapter;
 
     private boolean isNetworkConnected() {
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -64,8 +60,7 @@ public class SearchActivity extends BaseActivity<SearchPresenter> implements Sea
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
         ButterKnife.bind(this);
-
-
+        setTitle(R.string.hint_search);
     }
 
     @Override
@@ -73,10 +68,11 @@ public class SearchActivity extends BaseActivity<SearchPresenter> implements Sea
         getMenuInflater().inflate(R.menu.menu, menu);
         MenuItem menuItem = menu.findItem(R.id.action_search);
         android.widget.SearchView searchView = (android.widget.SearchView) menuItem.getActionView();
+        searchView.setMaxWidth(Integer.MAX_VALUE);
+        searchView.setQueryHint("Buscá un producto");
         searchView.setOnQueryTextListener(this);
-        return true;
+        return super.onCreateOptionsMenu(menu);
     }
-
 
     @Override
     public void showProgressBar() {
@@ -100,13 +96,12 @@ public class SearchActivity extends BaseActivity<SearchPresenter> implements Sea
 
     @Override
     public void showSearchList(List<Product> products) {
-
         recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         LinearLayoutManager linear = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linear);
-        adapter = new RecyclerAdapter(products, this) ;
+        adapter = new RecyclerAdapter(products, this);
         recyclerView.setAdapter(adapter);
-}
+    }
 
     @Override
     public void fetchSearchList(String value) {
@@ -115,29 +110,33 @@ public class SearchActivity extends BaseActivity<SearchPresenter> implements Sea
 
     @Override
     public void showDataFetchErrors() {
-        errorText.setVisibility(View.VISIBLE);
+        Snackbar.make(findViewById(android.R.id.content), "Ocurrió un error. Intentalo nuevamente.", Snackbar.LENGTH_LONG).show();
     }
 
     @Override
-    public void hideDataFetchErrors() {
-        errorText.setVisibility(View.GONE);
-    }
-
-    @Override
-    public void hideFindText() {
+    public void hideHintText() {
         findText.setVisibility(View.GONE);
     }
 
     @Override
-    public boolean onQueryTextSubmit(String query) {
-        if(this.isNetworkConnected()) {
-            fetchSearchList(query);
-        }
-        else{
+    public void showHintText() {
+        findText.setVisibility(View.VISIBLE);
+    }
 
-            Snackbar.make(findViewById(android.R.id.content), "Sin conexion. Revise sus ajustes.", Snackbar.LENGTH_LONG).setAction("conect", null).show();
+    @Override
+    public void showNoResultItems() {
+        showHintText();
+        findText.setText("No se obtuvieron resultados para tu búsqueda.");
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        if (this.isNetworkConnected()) {
+            fetchSearchList(query);
+        } else {
+            Snackbar.make(findViewById(android.R.id.content), "Sin conexion. Revise sus ajustes.", Snackbar.LENGTH_LONG).show();
         }
-        return false;
+        return true;
     }
 
     @Override
@@ -146,12 +145,7 @@ public class SearchActivity extends BaseActivity<SearchPresenter> implements Sea
     }
 
     @Override
-    public void onItemClick(int clickerItem) {
-
-    }
-
-    @Override
-    public void onItemClick(Product product){
+    public void onItemClick(Product product) {
         Intent resultsIntent = new Intent(SearchActivity.this, DetailsActivity.class);
         resultsIntent.putExtra("product", product);
         startActivity(resultsIntent);

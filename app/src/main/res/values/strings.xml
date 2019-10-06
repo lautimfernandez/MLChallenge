@@ -2,9 +2,11 @@
     <string name="app_name">MLchallenge</string>
     <string name="mercado_libre_challenge">Mercado Libre Challenge</string>
     <string name="buscar_producto">Buscar producto</string>
+    <string name="hint_spinner">Cantidad</string>
     <string name="ingrese_producto">Ingrese producto</string>
     <string name="comenzar">Comenzar</string>
     <string name="errorText">Error. Por favor intente nuevamente.</string>
     <string name="image">product image</string>
-    <string name="find">Realizar una búsqueda.</string>
+    <string name="find">Realizá una búsqueda</string>
+    <string name="hint_search">Tocá la lupa para buscar</string>
 </resources>

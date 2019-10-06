@@ -1,9 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
-
-
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -15,167 +10,135 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <Button
-                android:id="@+id/cart"
-                android:layout_width="279dp"
-                android:layout_height="53dp"
-                android:background="@android:color/white"
-                android:text="Agregar al carrito"
-                android:textColor="@color/design_default_color_primary"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.454"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/buy"
-                app:layout_constraintVertical_bias="0.0" />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/activity_padding">
 
             <ImageView
                 android:id="@+id/imageDetails"
-                android:layout_width="411dp"
-                android:layout_height="270dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.117"
+                android:layout_width="match_parent"
+                android:layout_height="320dp"
                 app:srcCompat="@mipmap/ic_launcher" />
 
-            <TextView
-                android:id="@+id/soldQuantity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Quantity"
-                android:textSize="15sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.036"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/imageDetails"
-                app:layout_constraintVertical_bias="0.633" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="@dimen/activity_padding">
 
-            <TextView
-                android:id="@+id/titleDetails"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Producto"
-                android:textColor="@android:color/black"
-                android:textSize="33sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageDetails"
-                app:layout_constraintVertical_bias="0.129" />
+                <TextView
+                    android:id="@+id/conditionQuantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="condition - quantity"
+                    android:textSize="16sp" />
 
-            <TextView
-                android:id="@+id/priceDetails"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Precio"
-                android:textColor="@android:color/black"
-                android:textSize="23sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.037"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/titleDetails"
-                app:layout_constraintVertical_bias="0.087" />
+                <TextView
+                    android:id="@+id/titleDetails"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Producto"
+                    android:textColor="@android:color/black"
+                    android:textSize="32sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp"/>
 
-            <ImageView
-                android:id="@+id/shipping"
-                android:layout_width="40dp"
-                android:layout_height="43dp"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.888"
-                app:layout_constraintStart_toEndOf="@+id/priceDetails"
-                app:layout_constraintTop_toBottomOf="@+id/titleDetails"
-                app:layout_constraintVertical_bias="0.081"
-                app:srcCompat="@drawable/freeship" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/mercadoPago"
-                android:layout_width="41dp"
-                android:layout_height="56dp"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/shipping"
-                app:layout_constraintHorizontal_bias="0.871"
-                app:layout_constraintStart_toEndOf="@+id/priceDetails"
-                app:layout_constraintTop_toBottomOf="@+id/titleDetails"
-                app:layout_constraintVertical_bias="0.046"
-                app:srcCompat="@drawable/mercadopago" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginRight="8dp"
+                        android:layout_toStartOf="@+id/shipping"
+                        android:layout_toLeftOf="@+id/shipping"
+                        android:gravity="left"
+                        android:orientation="vertical">
 
-            <Spinner
-                android:id="@+id/spinner"
-                android:layout_width="280dp"
-                android:layout_height="28dp"
-                android:layout_marginTop="136dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.458"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/titleDetails"
-                app:layout_constraintVertical_bias="0.256" />
+                        <TextView
+                            android:id="@+id/priceDetails"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Precio"
+                            android:textColor="@android:color/black"
+                            android:textSize="24sp"
+                            android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/cantidad"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Cantidad"
-                app:layout_constraintBottom_toTopOf="@+id/spinner"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/titleDetails"
-                app:layout_constraintVertical_bias="0.898" />
 
-            <Button
-                android:id="@+id/buy"
-                android:layout_width="279dp"
-                android:layout_height="53dp"
-                android:background="@color/design_default_color_primary"
-                android:text="Comprar"
-                android:textColor="@android:color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.462"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/spinner"
-                app:layout_constraintVertical_bias="0.441" />
+                        <TextView
+                            android:id="@+id/address"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Ubicacion"
+                            android:textSize="16sp" />
 
-            <TextView
-                android:id="@+id/condition"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="condition"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toTopOf="@+id/spinner"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.037"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageDetails"
-                app:layout_constraintVertical_bias="0.079" />
+                    </LinearLayout>
 
-            <TextView
-                android:id="@+id/address"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ubicacion"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.038"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/titleDetails"
-                app:layout_constraintVertical_bias="0.324" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                    <ImageView
+                        android:id="@+id/shipping"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_toLeftOf="@+id/mercadoPago"
+                        android:scaleType="centerCrop"
+                        android:visibility="visible"
+                        app:srcCompat="@drawable/freeship" />
+
+                    <ImageView
+                        android:id="@+id/mercadoPago"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:visibility="visible"
+                        app:srcCompat="@drawable/mercadopago" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/cantidad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="Cantidad" />
+
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="288dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="center" />
+
+                <Button
+                    android:id="@+id/buy"
+                    android:layout_width="@dimen/button_width"
+                    android:layout_height="@dimen/button_height"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/design_default_color_primary"
+                    android:text="Comprar"
+                    android:textColor="@android:color/white" />
+
+                <Button
+                    android:id="@+id/cart"
+                    android:layout_width="@dimen/button_width"
+                    android:layout_height="@dimen/button_height"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:background="@android:color/white"
+                    android:text="Agregar al carrito"
+                    android:textColor="@color/design_default_color_primary" />
+
+            </LinearLayout>
+
+        </LinearLayout>
 
     </ScrollView>
 
