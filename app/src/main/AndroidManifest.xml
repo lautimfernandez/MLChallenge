@@ -22,9 +22,6 @@
             </intent-filter>
 
         </activity>
-        <activity android:name=".View.product" android:configChanges="orientation|screenSize"/>
-        <activity android:name=".View.results" android:configChanges="orientation|screenSize"/>
-        <activity android:name=".View.search" android:configChanges="orientation|screenSize"/>
     </application>
 
 </manifest>
