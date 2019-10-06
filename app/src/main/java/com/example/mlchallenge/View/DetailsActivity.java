@@ -70,16 +70,20 @@ public class DetailsActivity extends AppCompatActivity {
                 spinnerArray
         );
         avaliableQuantity.setAdapter(adapter);
+
         soldQuantity.setText(product.getSoldQuantity() + "");
         titleDetails.setText(product.getTitle());
         priceDetails.setText("$"+product.getPrice());
         address.setText(product.getAddress().getStateName()+ ", "  +product.getAddress().getCityName());
+
         if(product.getShipping().isFreeShipping()){
             shipping.setVisibility(View.VISIBLE);
         }
+
         if(product.getAcceptsMercadoPago()){
             mercadoPago.setVisibility(View.VISIBLE);
         }
+
         buy.setOnClickListener(v -> {
 
             if(mToast!=null){

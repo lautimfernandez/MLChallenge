@@ -43,6 +43,9 @@ public class SearchActivity extends BaseActivity<SearchPresenter> implements Sea
     TextView errorText;
     @BindView(R.id.recyclerResults) @Nullable
     RecyclerView recyclerView;
+    @BindView(R.id.findText)
+    TextView findText;
+
 
     RecyclerAdapter adapter ;
 
@@ -111,6 +114,16 @@ public class SearchActivity extends BaseActivity<SearchPresenter> implements Sea
     @Override
     public void showDataFetchErrors() {
         errorText.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideDataFetchErrors() {
+        errorText.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void hideFindText() {
+        findText.setVisibility(View.GONE);
     }
 
     @Override

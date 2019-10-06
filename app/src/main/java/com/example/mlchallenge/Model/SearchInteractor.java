@@ -33,13 +33,14 @@ public class SearchInteractor {
         call.enqueue(new Callback<Results>() {
             @Override
             public void onResponse(Call<Results> call, Response<Results> response) {
+                List<Product> res = response.body().getResults();
 
-                if(!response.isSuccessful()){
+                if(!response.isSuccessful() || res.size() == 0){
                     listener.onFailure();
                     return;
                 }
 
-                List<Product> res = response.body().getResults();
+
 
                 if(res!=null){
                     listener.onSuccess(res);
@@ -48,6 +49,7 @@ public class SearchInteractor {
 
             @Override
             public void onFailure(Call<Results> call, Throwable t) {
+                listener.onFailure();
                 Log.e("error", t.getMessage());
             }
         });

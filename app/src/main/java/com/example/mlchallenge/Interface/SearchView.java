@@ -19,4 +19,8 @@ public interface SearchView  {
 
     void showDataFetchErrors();
 
+    void hideDataFetchErrors();
+
+    void hideFindText();
+
 }

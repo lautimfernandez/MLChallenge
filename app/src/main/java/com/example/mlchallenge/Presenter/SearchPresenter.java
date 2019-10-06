@@ -20,13 +20,16 @@ public class SearchPresenter extends BasePresenter implements SearchInteractor.o
     }
 
     public void fetchData(String query){
+        view.hideFindText();
         view.showProgressBar();
         searchInteractor.remoteFetch(this, query);
     }
 
     @Override
     public void onSuccess(List<Product> products){
+        view.hideFindText();
         view.hideProgressBar();
+        view.hideDataFetchErrors();
         view.showSearch();
         view.showSearchList(products);
 
@@ -34,9 +37,10 @@ public class SearchPresenter extends BasePresenter implements SearchInteractor.o
 
     @Override
     public void onFailure(){
-        view.hideProgressBar();
+        view.hideFindText();
         view.showDataFetchErrors();
-
+        view.hideProgressBar();
+        view.hideSearch();
     }
 
 }

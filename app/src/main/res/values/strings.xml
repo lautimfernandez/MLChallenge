@@ -6,4 +6,5 @@
     <string name="comenzar">Comenzar</string>
     <string name="errorText">Error. Por favor intente nuevamente.</string>
     <string name="image">product image</string>
+    <string name="find">Realizar una búsqueda.</string>
 </resources>
