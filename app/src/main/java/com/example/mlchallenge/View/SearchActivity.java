@@ -45,6 +45,10 @@ public class SearchActivity extends BaseActivity<SearchPresenter> implements Sea
 
     RecyclerAdapter adapter;
 
+    /**
+     * This method checks if the device is connected to internet
+     * @return true if is connected
+     */
     private boolean isNetworkConnected() {
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 
