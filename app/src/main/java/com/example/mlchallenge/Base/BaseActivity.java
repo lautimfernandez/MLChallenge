@@ -10,8 +10,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 /**
- * This abstract class has the life cicle of an activity and each activity that extends this will
- * make himself and his presenter do an action of the cicle
+ * This abstract class has the lifecycle of an activity and each activity that extends this will
+ * make himself and his presenter do an action of the cycle
  * @param <Presenter> that extends of base presenter
  */
 public abstract class BaseActivity<Presenter extends BasePresenter> extends AppCompatActivity {

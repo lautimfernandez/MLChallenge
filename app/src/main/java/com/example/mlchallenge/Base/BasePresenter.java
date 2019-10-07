@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 /**
- * This abstract class follow the life cicle of base activity calling as a super class
+ * This abstract class follow the lifecycle of base activity calling as a super class
  */
 public abstract class BasePresenter {
 
