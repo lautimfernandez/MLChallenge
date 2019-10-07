@@ -1,7 +1,6 @@
 package com.example.mlchallenge.Model;
 
 
-
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -21,7 +20,7 @@ public class Results implements Serializable {
         return results;
     }
 
-    public String getQuery(){
+    public String getQuery() {
         return query;
     }
 

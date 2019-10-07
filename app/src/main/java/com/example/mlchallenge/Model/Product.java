@@ -62,6 +62,10 @@ public class Product implements Serializable {
         return price;
     }
 
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
     public String getCondition() {
         return condition;
     }

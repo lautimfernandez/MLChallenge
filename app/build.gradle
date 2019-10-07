@@ -21,6 +21,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
 }
 
 repositories {
@@ -48,4 +51,5 @@ dependencies {
         // Excludes the support library because it's already included by Glide.
         transitive = false
     }
+    testImplementation 'org.mockito:mockito-core:1.10.19'
 }

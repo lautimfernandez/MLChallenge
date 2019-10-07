@@ -1,8 +1,5 @@
 package com.example.mlchallenge.View;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -11,6 +8,8 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.example.mlchallenge.Model.Product;
@@ -22,6 +21,9 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+/**
+ * This activity shows the detials of the clicked product
+ */
 public class DetailsActivity extends AppCompatActivity {
 
     @BindView(R.id.imageDetails)
@@ -102,7 +104,5 @@ public class DetailsActivity extends AppCompatActivity {
         Glide.with(this)
                 .load(product.getThumbnail())
                 .into(imageDetails);
-
-
     }
 }

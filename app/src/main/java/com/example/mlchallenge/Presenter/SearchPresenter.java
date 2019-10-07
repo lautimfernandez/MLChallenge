@@ -3,13 +3,13 @@ package com.example.mlchallenge.Presenter;
 import androidx.annotation.NonNull;
 
 import com.example.mlchallenge.Base.BasePresenter;
+import com.example.mlchallenge.Interactor.SearchInteractor;
 import com.example.mlchallenge.Interface.SearchView;
 import com.example.mlchallenge.Model.Product;
-import com.example.mlchallenge.Interactor.SearchInteractor;
 
 import java.util.List;
 
-public class SearchPresenter extends BasePresenter implements SearchInteractor.onSearchFetched {
+public class SearchPresenter extends BasePresenter implements SearchInteractor.OnSearchFetched {
 
     private SearchView view;
     private SearchInteractor searchInteractor;
@@ -20,8 +20,12 @@ public class SearchPresenter extends BasePresenter implements SearchInteractor.o
         this.searchInteractor = searchInteractor;
     }
 
+    /**
+     * This method calls the inteactor's fetch method
+     * @param query the query to make the fetch
+     */
     public void fetchData(String query) {
-        view.hideHintText();
+        view.hideFindText();
         view.showProgressBar();
         searchInteractor.remoteFetch(this, query);
     }
@@ -29,11 +33,10 @@ public class SearchPresenter extends BasePresenter implements SearchInteractor.o
     @Override
     public void onSuccess(List<Product> products) {
         view.hideProgressBar();
-        if (products.size() > 0){
+        if (products.size() > 0) {
             view.showSearch();
             view.showSearchList(products);
-        }
-        else{
+        } else {
             view.showNoResultItems();
         }
 
@@ -41,7 +44,7 @@ public class SearchPresenter extends BasePresenter implements SearchInteractor.o
 
     @Override
     public void onFailure() {
-        view.showHintText();
+        view.showFindText();
         view.showDataFetchErrors();
         view.hideProgressBar();
         view.hideSearch();

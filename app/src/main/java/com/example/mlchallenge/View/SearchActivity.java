@@ -1,12 +1,5 @@
 package com.example.mlchallenge.View;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -17,11 +10,17 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.mlchallenge.Adapter.RecyclerAdapter;
 import com.example.mlchallenge.Base.BaseActivity;
+import com.example.mlchallenge.Interactor.SearchInteractor;
 import com.example.mlchallenge.Interface.SearchView;
 import com.example.mlchallenge.Model.Product;
-import com.example.mlchallenge.Interactor.SearchInteractor;
 import com.example.mlchallenge.Presenter.SearchPresenter;
 import com.example.mlchallenge.R;
 import com.google.android.material.snackbar.Snackbar;
@@ -31,6 +30,9 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+/**
+ * This activity shows the results of ML's search query
+ */
 public class SearchActivity extends BaseActivity<SearchPresenter> implements SearchView, android.widget.SearchView.OnQueryTextListener, RecyclerAdapter.ItemCLick {
 
     @BindView(R.id.progressBar)
@@ -114,18 +116,18 @@ public class SearchActivity extends BaseActivity<SearchPresenter> implements Sea
     }
 
     @Override
-    public void hideHintText() {
+    public void hideFindText() {
         findText.setVisibility(View.GONE);
     }
 
     @Override
-    public void showHintText() {
+    public void showFindText() {
         findText.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void showNoResultItems() {
-        showHintText();
+        showFindText();
         findText.setText("No se obtuvieron resultados para tu búsqueda.");
     }
 

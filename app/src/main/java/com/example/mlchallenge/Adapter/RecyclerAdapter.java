@@ -18,8 +18,8 @@ import java.util.List;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ResultsViewHolder> {
 
-    private List<Product> listItems;
     final private ItemCLick onClickListener;
+    private List<Product> listItems;
 
 
     public RecyclerAdapter(List<Product> items, ItemCLick listener) {
@@ -30,12 +30,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Result
     public void setData(List<Product> products) {
         listItems = products;
     }
-
-
-    public interface ItemCLick {
-        void onItemClick(Product product);
-    }
-
 
     @NonNull
     @Override
@@ -48,7 +42,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Result
         ResultsViewHolder viewHolder = new ResultsViewHolder(view);
 
         return viewHolder;
-
     }
 
     @Override
@@ -59,6 +52,13 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Result
     @Override
     public int getItemCount() {
         return listItems.size();
+    }
+
+    /**
+     * This interface was created to get the product on item click of the recycler view
+     */
+    public interface ItemCLick {
+        void onItemClick(Product product);
     }
 
     class ResultsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -85,8 +85,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Result
             Glide.with(itemView.getContext())
                     .load(product.getThumbnail())
                     .into(imageResult);
-
-
         }
 
         @Override

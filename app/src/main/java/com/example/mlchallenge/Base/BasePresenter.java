@@ -8,6 +8,9 @@ import androidx.annotation.CallSuper;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+/**
+ * This abstract class follow the life cicle of base activity calling as a super class
+ */
 public abstract class BasePresenter {
 
     protected BasePresenter() {
@@ -41,6 +44,4 @@ public abstract class BasePresenter {
     @CallSuper
     void onRequestPermissionsResult(final int requestCode, @NonNull final String[] permisssions, @NonNull final int[] grantResults) {
     }
-
-
 }
